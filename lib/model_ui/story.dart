@@ -14,7 +14,7 @@ class ModelStory extends StatelessWidget {
           ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: Image.network(
-                height: 170,
+                height: 190,
                 width: 120,
                 "https://m.media-amazon.com/images/S/pv-target-images/588c636274e7734719bc86dabde156694305caecd3cdc75ca19cf4139074b7eb.jpg",
                 fit: BoxFit.cover,
@@ -27,19 +27,21 @@ class ModelStory extends StatelessWidget {
               height: 25,
               width: 25,
               decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(5)),
-              child: AppText(
+                  color: Colors.blue.shade700,
+                  borderRadius: BorderRadius.circular(5)),
+              child: const AppText(
                 text: '6',
                 textColor: Colors.white,
               ),
             ),
           ),
-          Positioned(
-            bottom: 10,
+          const Positioned(
+            bottom: 40,
             left: 10,
             child: AppText(
               text: "Oscar Best",
               textColor: Colors.white,
+              fontWeight: FontWeight.bold,
             ),
           )
         ],

@@ -1,4 +1,4 @@
-import 'package:first_app/pages/stories.dart';
+import 'package:first_app/pages/page_accueil.dart';
 import 'package:flutter/material.dart';
 
 // Debut : la fonction principale void main()
@@ -13,10 +13,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
         debugShowCheckedModeBanner: false,
         //darkTheme: ThemeData.dark(),
-        home: StoryPage());
+        home: MyHomePage());
   }
 }
 

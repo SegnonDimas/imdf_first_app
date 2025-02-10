@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 
-class ScaffoldLearn extends StatelessWidget {
+class ScaffoldLearn extends StatefulWidget {
   const ScaffoldLearn({super.key});
 
   @override
+  State<ScaffoldLearn> createState() => _ScaffoldLearnState();
+}
+
+class _ScaffoldLearnState extends State<ScaffoldLearn>
+    with TickerProviderStateMixin {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Flexible(
-            flex: 2,
-            child: Container(
-              color: Colors.red,
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              color: Colors.black,
-            ),
-          ),
-          Flexible(
-            flex: 3,
-            child: Container(
-              color: Colors.blue,
-            ),
-          )
-        ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return const SizedBox(
+                height: 200,
+                child: Center(
+                  child: Text('Contenu du BottomSheet'),
+                ),
+              );
+            },
+          );
+        },
+        child: Icon(Icons.ads_click),
       ),
     );
   }
