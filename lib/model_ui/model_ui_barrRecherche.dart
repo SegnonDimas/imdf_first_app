@@ -26,7 +26,7 @@ class ModelBarrrecherche extends StatelessWidget {
           //
           Container(
             height: height ?? 50,
-            width: width ?? screenWidth * 0.6,
+            width: width ?? screenWidth * 0.55,
             decoration: BoxDecoration(
               color: Colors.grey.shade300,
               borderRadius: BorderRadius.circular(200),

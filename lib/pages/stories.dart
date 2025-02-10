@@ -12,6 +12,7 @@ class StoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
+    double bottomActionWidth = screenWidth * 0.03;
     return Scaffold(
       appBar: AppBar(
         title: AppText(
@@ -84,7 +85,7 @@ class StoryPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: screenWidth * 0.042,
+              width: bottomActionWidth,
             ),
             Badge(
               largeSize: 1,
@@ -100,7 +101,7 @@ class StoryPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: screenWidth * 0.042,
+              width: bottomActionWidth,
             ),
             Badge(
               largeSize: 1,
@@ -116,7 +117,7 @@ class StoryPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: screenWidth * 0.042,
+              width: bottomActionWidth,
             ),
             Badge(
               largeSize: 1,
@@ -132,7 +133,7 @@ class StoryPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: screenWidth * 0.042,
+              width: bottomActionWidth,
             ),
             Badge(
               largeSize: 1,
@@ -148,7 +149,7 @@ class StoryPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: screenWidth * 0.042,
+              width: bottomActionWidth,
             ),
             Badge(
               largeSize: 1,
@@ -164,7 +165,7 @@ class StoryPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: screenWidth * 0.042,
+              width: bottomActionWidth,
             ),
           ],
         ),
