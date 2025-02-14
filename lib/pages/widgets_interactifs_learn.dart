@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/app_text.dart';
-
 class WidgetsInteractifsLearn extends StatefulWidget {
   const WidgetsInteractifsLearn({super.key});
 
@@ -11,15 +9,19 @@ class WidgetsInteractifsLearn extends StatefulWidget {
 }
 
 class _WidgetsInteractifsLearnState extends State<WidgetsInteractifsLearn> {
+  // mes variables
   String messageSalutation = "---";
+  bool isChecked = false;
 
-  // code d'une fonction en Dart
+  // mes fonctions
+  // fonction remerciement
   void remerciement() {
     setState(() {
       messageSalutation = "Nous vous remercions pour votre confiance";
     });
   }
 
+  // fonction auRevoir
   void auRevoir(int tempUtilsation) {
     messageSalutation =
         "Vous avez passé $tempUtilsation min sur notre application. Nous vous en remercions";
@@ -28,36 +30,20 @@ class _WidgetsInteractifsLearnState extends State<WidgetsInteractifsLearn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
+      //backgroundColor: Colors.green,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            AppText(
-              text: messageSalutation,
-              fontSize: 20,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  print(messageSalutation);
+            Checkbox(
+                value: isChecked,
+                checkColor: Colors.white,
+                activeColor: Colors.green,
+                onChanged: (clic) {
                   setState(() {
-                    messageSalutation = "Bonjour cher utilisateur";
+                    isChecked = !isChecked;
                   });
-                },
-                child: Text('Saluer')),
-            SizedBox(height: 30),
-            ElevatedButton(
-                onPressed: remerciement,
-                style: ButtonStyle(),
-                child: Text('Remerciements')),
-            SizedBox(height: 30),
-            ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    auRevoir(50);
-                  });
-                },
-                child: const Text('Au revoir')),
+                })
           ],
         ),
       ),
