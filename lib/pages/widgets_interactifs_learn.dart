@@ -1,5 +1,6 @@
-import 'package:first_app/widgets/app_text.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/app_text.dart';
 
 class WidgetsInteractifsLearn extends StatefulWidget {
   const WidgetsInteractifsLearn({super.key});
@@ -18,6 +19,7 @@ class _WidgetsInteractifsLearnState extends State<WidgetsInteractifsLearn> {
   double whpImgSize = 50;
   double lkdImgSize = 50;
   double radius = 4000000;
+  bool pwdVisibility = false;
 
   // mes fonctions
   // fonction remerciement
@@ -36,53 +38,55 @@ class _WidgetsInteractifsLearnState extends State<WidgetsInteractifsLearn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      //backgroundColor: Colors.black,
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            AppText(
-              text: "LinkedIn logic",
-              textColor: Colors.white,
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(400000),
-              child: InkWell(
-                onTap: () {
-                  setState(() {
-                    lkdImgSize = 300;
-                  });
-                },
-                child: Image.network(
-                  "https://thumbs.dreamstime.com/b/belle-femme-africaine-173510.jpg",
-                  height: lkdImgSize,
-                  width: lkdImgSize,
-                  fit: BoxFit.cover,
-                ),
+        child: Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Icon(
+                Icons.account_circle,
+                size: 100,
               ),
-            ),
-            AppText(
-              text: "WhatsApp logic",
-              textColor: Colors.white,
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(radius),
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    whpImgSize = 300;
-                    radius = 0;
-                  });
-                },
-                child: Image.network(
-                  "https://thumbs.dreamstime.com/b/belle-femme-africaine-173510.jpg",
-                  height: whpImgSize,
-                  width: whpImgSize,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ],
+              TextField(
+                  keyboardType: TextInputType.text,
+                  decoration:
+                      InputDecoration(label: AppText(text: "Nom Prénoms"))),
+              TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(hintText: "exemple@gmail.com")),
+              TextField(
+                  keyboardType: TextInputType.phone,
+                  decoration: InputDecoration(label: AppText(text: "Numéro"))),
+              TextField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(label: AppText(text: "Age"))),
+              TextField(
+                  obscureText: pwdVisibility,
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.grey,
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              pwdVisibility = !pwdVisibility;
+                            });
+                          },
+                          icon: Icon(Icons.visibility)),
+                      prefix: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              pwdVisibility = !pwdVisibility;
+                            });
+                          },
+                          icon: Icon(Icons.lock)),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      label: AppText(text: "Mot de passe"))),
+            ],
+          ),
         ),
       ),
     );
