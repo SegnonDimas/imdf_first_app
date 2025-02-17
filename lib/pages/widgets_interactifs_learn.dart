@@ -15,6 +15,9 @@ class _WidgetsInteractifsLearnState extends State<WidgetsInteractifsLearn> {
   bool isChecked = false;
   Status? _character = Status.ON;
   int compteur = 0;
+  double whpImgSize = 50;
+  double lkdImgSize = 50;
+  double radius = 4000000;
 
   // mes fonctions
   // fonction remerciement
@@ -33,77 +36,51 @@ class _WidgetsInteractifsLearnState extends State<WidgetsInteractifsLearn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.green,
+      backgroundColor: Colors.black,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            // checkbox
             AppText(
-              text: "CheckBox",
+              text: "LinkedIn logic",
+              textColor: Colors.white,
             ),
-            Checkbox(
-                value: isChecked,
-                checkColor: Colors.white,
-                activeColor: Colors.blue,
-                onChanged: (clic) {
+            ClipRRect(
+              borderRadius: BorderRadius.circular(400000),
+              child: InkWell(
+                onTap: () {
                   setState(() {
-                    isChecked = !isChecked;
-                  });
-                }),
-
-            // radio
-            AppText(
-              text: "Radio",
-            ),
-            ListTile(
-              title: const Text('OFF'),
-              leading: Radio<Status>(
-                value: Status.OFF,
-                groupValue: _character,
-                onChanged: (Status? value) {
-                  setState(() {
-                    _character = value;
+                    lkdImgSize = 300;
                   });
                 },
+                child: Image.network(
+                  "https://thumbs.dreamstime.com/b/belle-femme-africaine-173510.jpg",
+                  height: lkdImgSize,
+                  width: lkdImgSize,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-            ListTile(
-              title: const Text('ON'),
-              leading: Radio<Status>(
-                value: Status.ON,
-                groupValue: _character,
-                onChanged: (Status? value) {
+            AppText(
+              text: "WhatsApp logic",
+              textColor: Colors.white,
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(radius),
+              child: GestureDetector(
+                onTap: () {
                   setState(() {
-                    _character = value;
+                    whpImgSize = 300;
+                    radius = 0;
                   });
                 },
+                child: Image.network(
+                  "https://thumbs.dreamstime.com/b/belle-femme-africaine-173510.jpg",
+                  height: whpImgSize,
+                  width: whpImgSize,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-
-            Row(
-              children: [
-                SizedBox(
-                  width: 50,
-                ),
-                AppText(
-                  text: "$compteur",
-                  fontSize: 50,
-                ),
-                IconButton(
-                  onPressed: () {
-                    setState(() {
-                      compteur = compteur + 1;
-                    });
-                    print("Valeur de compteur : $compteur");
-                  },
-                  icon: Icon(
-                    Icons.add,
-                    size: 48,
-                    color: Colors.blue,
-                  ),
-                ),
-              ],
             ),
           ],
         ),
