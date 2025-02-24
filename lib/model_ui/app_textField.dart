@@ -1,31 +1,36 @@
 import 'package:flutter/material.dart';
 
 class AppTextField extends StatelessWidget {
-  final Widget prefixIcon;
-  final Widget labelText;
-  final String hintText;
+  final Widget? prefixIcon;
+  final Widget? labelText;
+  final String? hintText;
   final Widget? suffixIcon;
+  final TextEditingController? controller;
   const AppTextField({
     super.key,
-    required this.prefixIcon,
-    required this.labelText,
-    required this.hintText,
+    this.controller,
+    this.prefixIcon,
+    this.labelText,
+    this.hintText,
     this.suffixIcon,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(10),
       child: TextField(
           keyboardType: TextInputType.visiblePassword,
+          controller: controller,
           decoration: InputDecoration(
               prefixIcon: prefixIcon,
               label: labelText,
               hintText: hintText,
               suffixIcon: suffixIcon ?? SizedBox(),
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)))),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide:
+                      BorderSide(color: Colors.red.shade700, width: 4)))),
     );
   }
 }
