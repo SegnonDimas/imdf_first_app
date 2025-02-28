@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
             // brightness: Brightness.dark,
           ),
         ),
-        home: PageConnexion());
+        home: const PageConnexion());
+    //home: BasicsWidgetsLearn());
   }
 }

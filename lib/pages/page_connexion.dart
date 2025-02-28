@@ -1,3 +1,4 @@
+import 'package:first_app/pages/page_accueil.dart';
 import 'package:first_app/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 
@@ -11,12 +12,13 @@ class PageConnexion extends StatefulWidget {
 }
 
 class _PageConnexionState extends State<PageConnexion> {
-  TextEditingController controller = TextEditingController();
   TextEditingController motDePasseController = TextEditingController();
   TextEditingController nomController = TextEditingController();
+
   String message = '';
   String userPsw = "123456";
 
+  TextEditingController controllerEssai = TextEditingController();
   void verifierConnexion() {
     if (nomController.text.isEmpty) {
       setState(() {
@@ -40,6 +42,8 @@ class _PageConnexionState extends State<PageConnexion> {
     } else {
       setState(() {
         message = "Connexion réussie";
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => MyHomePage()));
       });
     }
   }
@@ -53,12 +57,17 @@ class _PageConnexionState extends State<PageConnexion> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          //icon Facebook
           Icon(
             Icons.facebook,
-            color: Colors.blue,
+            color: Color.fromRGBO(84, 109, 229, 1),
             size: 150,
           ),
+
+          // espace
           SizedBox(height: 15),
+
+          // message de l'état de connexion
           AppText(
             text: message,
             textColor:
@@ -66,7 +75,7 @@ class _PageConnexionState extends State<PageConnexion> {
             fontWeight: FontWeight.w900,
           ),
 
-          //nom prénom
+          //champ de saisie du nom prénom
           AppTextField(
             // keyboardType: TextInputType.name,
             controller: nomController,
@@ -77,9 +86,11 @@ class _PageConnexionState extends State<PageConnexion> {
             hintText: 'Nom Prénoms',
             labelText: Text('Nom Prénoms'),
           ),
+
+          //espace
           SizedBox(height: 10),
 
-          // mot de passe
+          // champ de saisie du mot de passe
           AppTextField(
             // keyboardType: TextInputType.name,
             controller: motDePasseController,
@@ -94,26 +105,25 @@ class _PageConnexionState extends State<PageConnexion> {
               color: Colors.grey,
             ),
           ),
-          TextField(
-            //controller: controller,
-            onChanged: (textTape) {
-              setState(() {
-                message = controller.value.text;
-              });
-            },
-          ),
+
+          // espace
           SizedBox(height: 20),
-          /*AppText(
-            text: verifierMotDePasse(controller.value.text).length.toString(),
-            textColor: Colors.red,
-            fontWeight: FontWeight.w900,
-          ),*/
-          TextButton(
-              onPressed: verifierConnexion,
-              child: AppText(
-                text: 'Connexion',
-                textColor: Colors.blue,
-                fontSize: 40,
+
+          // bouton de connexion
+          InkWell(
+              onTap: verifierConnexion,
+              child: Container(
+                height: screenHeight * 0.07,
+                width: screenWidth - 20,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(84, 109, 229, 1),
+                    borderRadius: BorderRadius.circular(10)),
+                child: AppText(
+                    text: 'Se connecter',
+                    textColor: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25),
               ))
         ],
       ),
