@@ -10,7 +10,7 @@ class FirstPage extends StatefulWidget {
 class _FirstPageState extends State<FirstPage> {
   void lancement() {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushNamed(context, '/page1');
+      Navigator.pushReplacementNamed(context, '/page1');
     });
   }
 
