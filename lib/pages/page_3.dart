@@ -10,6 +10,21 @@ class Page3 extends StatefulWidget {
 class _Page3State extends State<Page3> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // utilisation de pop pour revenir à la page précédente
+            IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.arrow_back, size: 50)),
+          ],
+        ),
+      ),
+    );
   }
 }

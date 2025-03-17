@@ -24,17 +24,26 @@ class _Page1State extends State<Page1> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
-              child: buildButton(
-                  text: "Aller à la page 2",
-                  color: Colors.purple,
-                  textColor: Colors.white,
-                  //utilisation de push pour naviguer vers la page 2
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const Page2()));
-                  }),
-            ),
+            // Navigato.push
+            buildButton(
+                text: "Aller à la page 2",
+                color: Colors.purple,
+                textColor: Colors.white,
+                //utilisation de push pour naviguer vers la page 2
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Page2()));
+                }),
+            // Navigator.pushRemplacement
+            buildButton(
+                text: "Remplacer par la page 2",
+                color: Colors.purple,
+                textColor: Colors.white,
+                //utilisation de push pour naviguer vers la page 2
+                onTap: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => const Page2()));
+                }),
           ],
         ),
       ),
@@ -49,19 +58,22 @@ Widget buildButton(
     required Function() onTap}) {
   return InkWell(
     onTap: onTap,
-    child: Container(
-        height: 50,
-        width: 300,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: AppText(
-          text: text,
-          fontSize: 20,
-          color: textColor,
-          fontWeight: FontWeight.bold,
-        )),
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+          height: 50,
+          width: 300,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: AppText(
+            text: text,
+            fontSize: 20,
+            color: textColor,
+            fontWeight: FontWeight.bold,
+          )),
+    ),
   );
 }
