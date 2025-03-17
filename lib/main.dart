@@ -1,4 +1,7 @@
+import 'package:first_app/pages/first_page.dart';
 import 'package:first_app/pages/page_1.dart';
+import 'package:first_app/pages/page_2.dart';
+import 'package:first_app/pages/page_3.dart';
 import 'package:flutter/material.dart';
 
 // Debut : la fonction principale void main()
@@ -21,7 +24,13 @@ class MyApp extends StatelessWidget {
           seedColor: Colors.purple,
         ),
       ),
-      home: const Page1(),
+      //initialRoute: '/page1',
+      routes: <String, WidgetBuilder>{
+        '/': (context) => const FirstPage(),
+        '/page1': (context) => const Page1(),
+        '/page2': (context) => const Page2(),
+        '/page3': (context) => const Page3(),
+      },
     );
     //home: PageListeAmis());
     //home: ScrollablesWidgetsLearn());

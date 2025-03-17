@@ -24,15 +24,14 @@ class _Page1State extends State<Page1> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Navigato.push
+            // Navigato.pushNamed
             buildButton(
                 text: "Aller à la page 2",
                 color: Colors.purple,
                 textColor: Colors.white,
                 //utilisation de push pour naviguer vers la page 2
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Page2()));
+                  Navigator.pushNamed(context, '/page2');
                 }),
             // Navigator.pushRemplacement
             buildButton(
