@@ -1,5 +1,7 @@
-import 'package:first_app/pages/counter_page.dart';
+import 'package:first_app/pages/counter_provider.dart';
+import 'package:first_app/provider/counter_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 // Debut : la fonction principale void main()
 void main() {
@@ -13,27 +15,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // Define the default brightness and colors.
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.purple,
+    // ChangeNotifierProvier de Provider
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => Counter(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          // Define the default brightness and colors.
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.purple,
+          ),
         ),
+        home: const CounterPage(),
       ),
-      //initialRoute: '/page1',
-      /*routes: <String, WidgetBuilder>{
-        '/': (context) => const FirstPage(),
-        '/page1': (context) => const Page1(),
-        '/page2': (context) => const Page2(),
-        '/page3': (context) => const Page3(),
-      },*/
-
-      home: CounterPage(),
     );
-    //home: PageListeAmis());
-    //home: ScrollablesWidgetsLearn());
-
-    //home: BasicsWidgetsLearn());
   }
 }
