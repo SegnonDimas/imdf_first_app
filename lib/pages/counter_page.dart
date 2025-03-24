@@ -11,6 +11,17 @@ class CounterPage extends StatefulWidget {
 class _CounterState extends State<CounterPage> {
   int counter = 0;
 
+  void decrement() {
+    counter--;
+    setState(() {});
+  }
+
+  void increment() {
+    setState(() {
+      counter++;
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -39,21 +50,14 @@ class _CounterState extends State<CounterPage> {
           FloatingActionButton(
             backgroundColor: Colors.purple,
             foregroundColor: Colors.white,
-            onPressed: () {
-              setState(() {
-                counter++;
-              });
-            },
+            onPressed: increment,
             child: const Icon(Icons.add),
           ),
           const SizedBox(width: 10),
           FloatingActionButton(
             backgroundColor: Colors.purple,
             foregroundColor: Colors.white,
-            onPressed: () {
-              counter--;
-              setState(() {});
-            },
+            onPressed: decrement,
             child: const Icon(Icons.remove),
           ),
         ],
